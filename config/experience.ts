@@ -101,7 +101,7 @@ export const experiences: ExperienceInterface[] = [
       "Implemented an automated visual inspection system with Python and industrial cameras, improving defect detection accuracy and reducing reliance on manual inspection.",
       "Performed root cause analysis based on inspection data and applied corrective measures, resulting in measurable improvements in production quality and efficiency.",
     ],
-    skills: ["HTML 5", "CSS 3", "Javascript", "Bootstrap", "MongoDB"],
+    skills: ["HTML 5", "CSS 3", "Javascript", "Bootstrap", "MongoDB", "Python"],
     companyUrl: "https://www.thaisummit.co.th/th/",
     logo: "/experience/Thai_Summit_Group_Logo.svg",
   },

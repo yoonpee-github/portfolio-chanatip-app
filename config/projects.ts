@@ -79,25 +79,25 @@ export const Projects: ProjectInterface[] = [
         ],
       },
       {
-        title: "Client Dashboard",
+        title: "Admin Dashboard",
         description:
-          "Portal for clinics to review their cases, check production status, and receive delivery updates in real-time.",
+          "Administrative interface for internal staff to manage orders, oversee production pipelines, and update case progress.",
         imgArr: [
           "/projects/dentallight/dentallight_7.png",
           "/projects/dentallight/dentallight_8.png",
         ],
       },
       {
-        title: "Admin Dashboard",
+        title: "Dashboard",
         description:
-          "Administrative interface for internal staff to manage orders, oversee production pipelines, and update case progress.",
+          "Check production status, and receive delivery updates in real-time.",
         imgArr: ["/projects/dentallight/logo.png"],
       },
     ],
     descriptionDetails: {
       paragraphs: [
         "I developed an internal web-based system for Dentallight to manage the entire workflow of dental product orders — covering aligners and retainers. The platform streamlines the process from order intake, production tracking, to final delivery, providing real-time visibility to both staff and clinics.",
-        "Using Next.js and React with TypeScript, I built a responsive and intuitive interface for both staff and clinic partners. On the backend, I implemented Node.js, MongoDB, and GraphQL to handle complex workflows and ensure accurate data tracking across multiple stages.",
+        "Using Next.js and React with TypeScript, I built a responsive and intuitive interface for both staff and clinic partners. On the backend, I implemented Node.js, Python and MySQL to handle complex workflows and ensure accurate data tracking across multiple stages.",
         "The system’s production workflow module enables staff to update the progress of each case — from fabrication to quality checks — ensuring transparency and reducing errors. Additionally, the client dashboard empowers dental clinics to check case progress and track deliveries directly, improving overall communication.",
         "This project was crucial in digitizing Dentallight’s core business operations, allowing seamless management of both aligner and retainer production pipelines with efficiency and scalability.",
       ],
@@ -107,7 +107,7 @@ export const Projects: ProjectInterface[] = [
         "Developed a client-facing dashboard for clinics to monitor case status in real-time.",
         "Created an admin dashboard to manage production pipelines and logistics.",
         "Leveraged Next.js, React, and TypeScript for a modern, responsive front-end.",
-        "Implemented Node.js, MongoDB, GraphQL, and Nest.js for a robust backend system.",
+        "Implemented Node.js, Python and MySQL for a robust backend system.",
         "Improved efficiency, transparency, and scalability of Dentallight’s core business processes.",
       ],
     },
@@ -136,9 +136,9 @@ export const Projects: ProjectInterface[] = [
     companyLogoImg: "/projects/operations_monitoring/logo.png",
     pagesInfoArr: [
       {
-        title: "Sales Dashboard",
+        title: "User Authentication",
         description:
-          "Comprehensive dashboard showing daily, monthly, and yearly sales performance across branches.",
+          "Secure login and role-based access control for staff and administrators.",
         imgArr: [
           "/projects/operations_monitoring/operations_monitoring_1.png",
           "/projects/operations_monitoring/operations_monitoring_2.png",
@@ -147,7 +147,7 @@ export const Projects: ProjectInterface[] = [
       {
         title: "Customer Insights",
         description:
-          "Analytics module displaying number of customers, active bookings, and repeat visits.",
+          "Analytics module displaying number of customers, active bookings, and repeat visits and comprehensive dashboard showing daily, monthly, and yearly sales performance across branches.",
         imgArr: [
           "/projects/operations_monitoring/operations_monitoring_3.png",
           "/projects/operations_monitoring/operations_monitoring_4.png",
@@ -183,18 +183,18 @@ export const Projects: ProjectInterface[] = [
     ],
     descriptionDetails: {
       paragraphs: [
-        "I developed a mobile-based operations and monitoring platform designed to provide real-time insights into sales performance and customer analytics. The system helps businesses track critical metrics such as bookings, average revenue per customer, and overall sales trends.",
-        "Built with React Native for cross-platform accessibility, the application provides managers and staff with an easy-to-use interface for tracking KPIs at both branch and company levels. The backend, powered by Node.js and MongoDB, ensures reliable data storage and fast querying of analytics data.",
+        "I developed a website-based operations and monitoring platform designed to provide real-time insights into sales performance and customer analytics. The system helps businesses track critical metrics such as bookings, average revenue per customer, and overall sales trends.",
+        "Built with Vue.js for cross-platform accessibility, the application provides managers and staff with an easy-to-use interface for tracking KPIs at both branch and company levels. The backend, powered by Node.js, Python and MySQL, ensures reliable data storage and fast querying of analytics data.",
         "One of the key strengths of this system is its forecasting module, which leverages historical data to project future sales and customer growth. This enables management to set realistic KPIs and optimize strategies for increasing revenue.",
         "By digitizing reporting and monitoring processes, the platform empowers businesses to make data-driven decisions, improve operational efficiency, and maintain consistent growth across all branches.",
       ],
       bullets: [
-        "Developed a mobile-first analytics system with React Native for real-time sales and operations monitoring.",
+        "Developed a website-first analytics system with Vue.js for real-time sales and operations monitoring.",
         "Implemented dashboards for tracking daily, monthly, and yearly sales performance.",
         "Built customer analytics including bookings, average bill per customer, and repeat visits.",
         "Designed branch-level KPI monitoring to measure closed sales and treatment performance.",
         "Integrated predictive analytics for forecasting sales and customer growth.",
-        "Leveraged Node.js and MongoDB to handle high-volume data storage and analysis.",
+        "Leveraged Node.js, Python and MySQL to handle high-volume data storage and analysis.",
         "Enhanced decision-making processes with accurate, accessible business insights.",
       ],
     },
@@ -223,15 +223,15 @@ export const Projects: ProjectInterface[] = [
     companyLogoImg: "/projects/stock/logo.png",
     pagesInfoArr: [
       {
-        title: "Branch Inventory Dashboard",
+        title: "Product Inventory Dashboard",
         description:
-          "Real-time overview of available stock levels across different branches.",
+          "Comprehensive management dashboard displaying detailed product information, stock quantities, and item categories within the inventory system.",
         imgArr: ["/projects/stock/stock_1.png"],
       },
       {
-        title: "User Authentication",
+        title: "Inventory & Order Management",
         description:
-          "Secure login and role-based access control for staff and administrators.",
+          "A centralized system for managing product inventory and processing branch orders efficiently between the main warehouse and branch locations.",
         imgArr: ["/projects/stock/stock_2.png", "/projects/stock/stock_3.png"],
       },
       {
@@ -241,9 +241,9 @@ export const Projects: ProjectInterface[] = [
         imgArr: ["/projects/stock/stock_4.png"],
       },
       {
-        title: "Stock Transfer Between Branches",
+        title: "Branch Inventory Dashboar",
         description:
-          "System for transferring items between branches with real-time tracking of outgoing and incoming stock.",
+          "Real-time overview of available stock levels across different branches.",
         imgArr: ["/projects/stock/stock_5.png", "/projects/stock/stock_6.png"],
       },
       {
@@ -265,7 +265,7 @@ export const Projects: ProjectInterface[] = [
         "The system includes a stock request and approval module that allows branches to submit requests to the central warehouse. These requests can be reviewed, approved, and tracked through delivery to ensure accurate stock movement.",
         "Another key feature is the inter-branch transfer functionality, which enables real-time monitoring of items being transferred from one branch to another. This ensures transparency and reduces discrepancies in stock reporting.",
         "Additionally, the system tracks product usage and sales, offering insights into what products are consumed in-house and what items are purchased by customers. This data-driven approach helps businesses optimize inventory, reduce waste, and ensure product availability.",
-        "Built with React Native for mobile accessibility and Node.js with MongoDB on the backend, the system provides real-time updates and scalable performance across branches.",
+        "Built with Vue.js for website accessibility and Node.js, Python and MySQl on the backend, the system provides real-time updates and scalable performance across branches.",
       ],
       bullets: [
         "Developed a stock monitoring system for multi-branch operations.",
@@ -273,8 +273,8 @@ export const Projects: ProjectInterface[] = [
         "Enabled real-time stock transfer tracking between branches.",
         "Created reporting features to monitor product usage and customer purchases.",
         "Built an admin panel for centralized oversight of stock, requests, and transfers.",
-        "Used React Native for mobile access and Redux for efficient state management.",
-        "Leveraged Node.js and MongoDB for scalable, real-time data handling.",
+        "Used Vue.js for website access for efficient state management.",
+        "Leveraged Node.js, Python and MySQL for scalable, real-time data handling.",
       ],
     },
   },
@@ -302,54 +302,58 @@ export const Projects: ProjectInterface[] = [
     companyLogoImg: "/projects/photo/logo.png",
     pagesInfoArr: [
       {
-        title: "Patient Photo Capture",
+        title: "Patient Photo Archive",
         description:
-          "Interface for capturing high-quality dental images before and after procedures",
+          "System for capturing, storing, and reviewing dental images to track treatment progress and patient history over time.",
         imgArr: ["/projects/photo/photo_1.png"],
-      },
-      {
-        title: "Case Management Dashboard",
-        description:
-          "Centralized dashboard for dentists to manage and organize patient cases",
-        imgArr: ["/projects/photo/photo_2.png"],
       },
       {
         title: "Before & After Comparison",
         description:
           "Side-by-side image comparison tool to highlight treatment results",
-        imgArr: ["/projects/photo/photo_3.png"],
+        imgArr: ["/projects/photo/photo_2.png"],
       },
       {
-        title: "Case Review Library",
+        title: "Patient Photo Capture",
         description:
-          "Repository of past treatment cases used for internal reviews and training",
-        imgArr: ["/projects/photo/photo_4.png", "/projects/photo/photo_5.png"],
+          "Interface for capturing high-quality dental images before and after procedures",
+        imgArr: ["/projects/photo/photo_3.png"],
       },
       {
         title: "Client Presentation Mode",
         description:
           "Dedicated view for showcasing results to clients in a professional format",
-        imgArr: ["/projects/photo/photo_6.png", "/projects/photo/photo_7.png"],
+        imgArr: [
+          "/projects/photo/photo_4.png",
+          "/projects/photo/photo_5.png",
+          "/projects/photo/photo_6.png",
+        ],
       },
       {
         title: "Data Security & Storage",
         description:
           "Encrypted storage ensuring patient photo privacy and compliance",
-        imgArr: ["/projects/photo/photo_8.png", "/projects/photo/photo_9.png"],
+        imgArr: ["/projects/photo/photo_7.png", "/projects/photo/photo_8.png"],
+      },
+      {
+        title: "Patient Referral & Procedure Tracking",
+        description:
+          "System for managing patient referrals and scheduling upcoming dental procedures, ensuring smooth coordination between visits.",
+        imgArr: ["/projects/photo/photo_9.png"],
       },
     ],
     descriptionDetails: {
       paragraphs: [
         "I designed and developed a specialized dental imaging system that enables clinics to capture patient photos both before and after procedures. The system is tailored to manage and organize these images effectively, supporting case reviews and client consultations.",
-        "The platform was built with Next.js and React for speed and responsiveness, while MongoDB provides scalable storage for patient case data. TypeScript ensures maintainability and reliability of the application.",
+        "The platform was built with Vue.js for speed and responsiveness, while MySQL provides scalable storage for patient case data. TypeScript ensures maintainability and reliability of the application.",
         "Key features include a streamlined photo capture workflow, a secure case management dashboard, and tools for comparing before-and-after images side by side. The platform also supports creating review libraries that dentists can use for internal reference and training.",
         "A dedicated presentation mode allows clinics to showcase treatment results to clients in a clear and professional manner, enhancing transparency and trust.",
       ],
       bullets: [
         "Developed a photo capture and case management system tailored for dental clinics",
-        "Implemented secure storage for patient photos using MongoDB",
+        "Implemented secure storage for patient photos using MySQL",
         "Created a before-and-after comparison tool to highlight treatment results",
-        "Built a responsive case management dashboard with Next.js and React",
+        "Built a responsive case management dashboard with Vue.js",
         "Enabled a client presentation mode for showcasing treatment outcomes",
         "Integrated user-friendly workflows for dental staff to capture and organize photos",
         "Ensured compliance and data security for sensitive patient records",
@@ -417,7 +421,7 @@ export const Projects: ProjectInterface[] = [
         "Customers can be registered with their appointment details and are automatically assigned a queue number. A real-time dashboard displays waiting times and queue progress, allowing staff to manage flow effectively.",
         "Doctors and rooms can be assigned dynamically, and the system records the start and end time of each procedure. This provides detailed insights into service duration, resource utilization, and patient experience.",
         "The system also integrates a billing module that automatically calculates charges based on the treatments performed, ensuring accurate and efficient invoicing.",
-        "Built using React for the front-end and Node.js with MongoDB on the backend, the platform provides real-time updates and scalability to handle multiple branches or large patient volumes.",
+        "Built using Vue.js for the front-end and Node.js, Python and MySQL on the backend, the platform provides real-time updates and scalability to handle multiple branches or large patient volumes.",
       ],
       bullets: [
         "Developed a queue management system to streamline patient flow in clinics.",
@@ -425,7 +429,7 @@ export const Projects: ProjectInterface[] = [
         "Built features for doctor and room assignment with detailed procedure tracking.",
         "Recorded treatment duration and services performed for reporting and optimization.",
         "Integrated billing module to generate invoices automatically after treatments.",
-        "Leveraged React, Node.js, and MongoDB for real-time and scalable operations.",
+        "Leveraged Vue.js, Node.js, Python and MySQL for real-time and scalable operations.",
         "Improved customer experience by reducing wait times and ensuring transparency.",
       ],
     },

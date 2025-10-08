@@ -18,8 +18,6 @@ interface ProjectPageProps {
   };
 }
 
-const githubUsername = "chanatipsombatanurak";
-
 export default function Project({ params }: ProjectPageProps) {
   let project = Projects.find((val) => val.id === params.projectId);
   if (!project) {
@@ -49,7 +47,7 @@ export default function Project({ params }: ProjectPageProps) {
           {project.companyName}
           <div className="flex items-center">
             {project.githubLink && (
-              <CustomTooltip text="Link to the source code.">
+              <CustomTooltip text="Enjoy my work?">
                 <Link href={project.githubLink} target="_blank">
                   <Icons.gitHub className="w-6 ml-4 text-muted-foreground hover:text-foreground" />
                 </Link>
@@ -72,7 +70,7 @@ export default function Project({ params }: ProjectPageProps) {
           >
             <Image
               src={profileImg}
-              alt={"naman"}
+              alt={"chanatip"}
               width={42}
               height={42}
               className="rounded-full bg-background"

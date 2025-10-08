@@ -23,8 +23,8 @@ import { cn } from "@/lib/utils";
 import profileImg from "@/public/profile-img.jpg";
 
 export const metadata: Metadata = {
-  title: `${pagesConfig.home.metadata.title} | Modern Next.js Developer Portfolio Template`,
-  description: `${pagesConfig.home.metadata.description} This open-source Next.js portfolio template is customizable to showcase your skills and projects.`,
+  title: `${pagesConfig.home.metadata.title} | Developer Portfolio`,
+  description: `${pagesConfig.home.metadata.description} A passionate full stack developer specializing in building modern, scalable, and user-focused web applications.`,
   alternates: {
     canonical: siteConfig.url,
   },
@@ -42,11 +42,10 @@ export default function IndexPage() {
     sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
   };
 
-  // Structured data for website as a software application (template)
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Next.js Portfolio Template",
+    name: "Next.js Portfolio",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
     offers: {
@@ -101,8 +100,8 @@ export default function IndexPage() {
           </AnimatedText>
           <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
-              Open-source Next.js portfolio template. Fork this on GitHub to
-              create your own developer portfolio.
+              A passionate full stack developer specializing in building modern,
+              scalable, and user-focused web applications.
             </p>
           </div>
 
