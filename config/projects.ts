@@ -384,31 +384,31 @@ export const Projects: ProjectInterface[] = [
         title: "Customer Check-in",
         description:
           "Module for registering customers with details of appointment, purpose of visit, and assigned queue number.",
-        imgArr: ["/projects/queue/queue_1.png", "/projects/queue/queue_2.png"],
+        imgArr: ["/projects/queue/queue_1.png"],
       },
       {
         title: "Queue Dashboard",
         description:
           "Real-time dashboard showing waiting times, queue order, and estimated service time.",
-        imgArr: ["/projects/queue/queue_3.png"],
+        imgArr: ["/projects/queue/queue_2.png"],
       },
       {
         title: "Doctor & Room Assignment",
         description:
           "Interface to assign customers to doctors and treatment rooms, tracking the start and end times of each procedure.",
-        imgArr: ["/projects/queue/queue_4.png", "/projects/queue/queue_5.png"],
+        imgArr: ["/projects/queue/queue_3.png"],
       },
       {
         title: "Treatment Tracking",
         description:
           "Detailed records of procedures performed, duration of each treatment, and related notes.",
-        imgArr: ["/projects/queue/queue_6.png"],
+        imgArr: ["/projects/queue/queue_4.png"],
       },
       {
         title: "Billing & Checkout",
         description:
           "Automated billing system generating invoices based on treatments completed, with payment tracking.",
-        imgArr: ["/projects/queue/queue_7.png", "/projects/queue/queue_8.png"],
+        imgArr: ["/projects/queue/queue_5.png"],
       },
     ],
     descriptionDetails: {
