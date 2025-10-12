@@ -81,6 +81,13 @@ import {
   SiTypescript,
   SiVisualstudiocode,
   SiVuedotjs,
+  SiVercel,
+  SiPostman,
+  SiGitlab,
+  SiDotnet,
+  SiCsharp,
+  SiPhp,
+  SiLaravel,
 } from "react-icons/si";
 
 export const Icons = {
@@ -158,6 +165,13 @@ export const Icons = {
   book: SiStorybook,
   heart: SiIheartradio,
   mariadb: SiMariadb,
+  vercel: SiVercel,
+  postman: SiPostman,
+  gitlab: SiGitlab,
+  dotnet: SiDotnet,
+  csharp: SiCsharp,
+  php: SiPhp,
+  laravel: SiLaravel,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

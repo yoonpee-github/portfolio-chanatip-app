@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 
 interface TabItem {
   value: string;
-  label: string;
+  label: React.ReactNode;
   content: React.ReactNode;
 }
 
@@ -69,7 +69,7 @@ export function ResponsiveTabs({
           <TabsList
             className={cn(
               "grid w-full",
-              items.length <= 3 ? "grid-cols-3" : "grid-cols-5"
+              items.length <= 3 ? "grid-cols-3" : "grid-cols-6"
             )}
           >
             {items.map((item) => (

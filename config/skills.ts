@@ -5,7 +5,7 @@ export interface skillsInterface {
   description: string;
   rating: number;
   icon: any;
-  category: "Frontend" | "Backend" | "Database" | "Tool";
+  category: "Frontend" | "Backend" | "Database" | "Cloud" | "Tool";
 }
 
 export const skillsUnsorted: skillsInterface[] = [
@@ -114,12 +114,12 @@ export const skillsUnsorted: skillsInterface[] = [
     category: "Frontend",
   },
   {
-    name: "AWS",
+    name: "AWS (EC2, S3, IAM)",
     description:
       "Utilize Amazon Web Services to build and deploy scalable, reliable, and secure applications.",
     rating: 3,
     icon: Icons.amazonaws,
-    category: "Tool",
+    category: "Cloud",
   },
   {
     name: "Bootstrap",
@@ -143,7 +143,7 @@ export const skillsUnsorted: skillsInterface[] = [
       "Build, ship, and run applications seamlessly using containerization technology.",
     rating: 3,
     icon: Icons.docker,
-    category: "Tool",
+    category: "Cloud",
   },
   {
     name: "FastAPI",
@@ -183,13 +183,13 @@ export const skillsUnsorted: skillsInterface[] = [
       "An open-source platform to programmatically author, schedule, and monitor complex data workflows.",
     rating: 3,
     icon: Icons.apacheairflow,
-    category: "Tool",
+    category: "Cloud",
   },
   {
     name: "PostgreSQL",
     description:
       "A powerful, open-source relational database system with strong support for SQL standards and advanced features.",
-    rating: 4,
+    rating: 3,
     icon: Icons.postgresql,
     category: "Database",
   },
@@ -199,21 +199,21 @@ export const skillsUnsorted: skillsInterface[] = [
       "A high-performance web server and reverse proxy known for its stability, scalability, and load balancing capabilities.",
     rating: 3,
     icon: Icons.nginx,
-    category: "Tool",
+    category: "Cloud",
   },
   {
     name: "Github",
     description:
       "A platform for version control and collaboration, enabling developers to host and review code, manage projects, and build software together.",
-    rating: 5,
+    rating: 4,
     icon: Icons.github,
-    category: "Tool",
+    category: "Cloud",
   },
   {
     name: "Figma",
     description:
       "A collaborative design tool used for UI/UX design, prototyping, and real-time team collaboration in the cloud.",
-    rating: 5,
+    rating: 4,
     icon: Icons.figma,
     category: "Tool",
   },
@@ -224,6 +224,70 @@ export const skillsUnsorted: skillsInterface[] = [
     rating: 3,
     icon: Icons.threedotjs,
     category: "Frontend",
+  },
+  {
+    name: "Vercel",
+    description:
+      "A cloud platform for deploying and hosting frontend applications, optimized for frameworks like Next.js with seamless CI/CD and global edge network delivery.",
+    rating: 4,
+    icon: Icons.vercel,
+    category: "Cloud",
+  },
+  {
+    name: "Postman",
+    description:
+      "A collaboration platform for API development that allows testing, documenting, and monitoring of APIs with an intuitive interface.",
+    rating: 4,
+    icon: Icons.postman,
+    category: "Tool",
+  },
+  {
+    name: "Git Lab (CI/CD Pipelines)",
+    description:
+      "A DevOps platform providing source code management and CI/CD pipelines to automate build, test, and deployment workflows.",
+    rating: 3,
+    icon: Icons.gitlab,
+    category: "Cloud",
+  },
+  {
+    name: "VS Code",
+    description:
+      "A lightweight yet powerful source code editor with built-in support for debugging, Git control, syntax highlighting, and extensions for various programming languages.",
+    rating: 5,
+    icon: Icons.code,
+    category: "Tool",
+  },
+  {
+    name: ".NET",
+    description:
+      "A framework developed by Microsoft for building scalable and secure applications across web, desktop, mobile, and cloud platforms.",
+    rating: 3,
+    icon: Icons.dotnet,
+    category: "Backend",
+  },
+  {
+    name: "C#",
+    description:
+      "A modern, object-oriented programming language developed by Microsoft, commonly used with the .NET framework to build web, desktop, and game applications.",
+    rating: 3,
+    icon: Icons.csharp,
+    category: "Backend",
+  },
+  {
+    name: "PHP",
+    description:
+      "A widely-used server-side scripting language designed for web development, enabling dynamic content and database-driven websites.",
+    rating: 3,
+    icon: Icons.php,
+    category: "Backend",
+  },
+  {
+    name: "Laravel",
+    description:
+      "A popular PHP web framework that simplifies development with elegant syntax, MVC architecture, and built-in tools for routing, authentication, and database management.",
+    rating: 3,
+    icon: Icons.laravel,
+    category: "Backend",
   },
 ];
 
