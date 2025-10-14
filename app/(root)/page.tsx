@@ -62,10 +62,10 @@ export default function IndexPage() {
 
   return (
     <ClientPageWrapper>
-      <Particles
+      {/* <Particles
         className="absolute inset-0 -z-10 animate-fade-in"
         quantity={1000}
-      />
+      /> */}
       <Script
         id="schema-person"
         type="application/ld+json"
