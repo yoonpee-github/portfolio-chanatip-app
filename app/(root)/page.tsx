@@ -1,8 +1,3 @@
-import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import Script from "next/script";
-
 import AboutmeCard from "@/components/aboutme/aboutme-card";
 import { AnimatedSection } from "@/components/common/animated-section";
 import { AnimatedText } from "@/components/common/animated-text";
@@ -10,6 +5,7 @@ import { ClientPageWrapper } from "@/components/common/client-page-wrapper";
 import { Icons } from "@/components/common/icons";
 import ExperienceCard from "@/components/experience/experience-card";
 import { ContactForm } from "@/components/forms/contact-form";
+import Particles from "@/components/particles/particles";
 import ProjectCard from "@/components/projects/project-card";
 import Rating from "@/components/skills/rating";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -21,6 +17,10 @@ import { siteConfig } from "@/config/site";
 import { featuredSkills } from "@/config/skills";
 import { cn } from "@/lib/utils";
 import profileImg from "@/public/profile-img.jpg";
+import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: `${pagesConfig.home.metadata.title} | Developer Portfolio`,
@@ -62,6 +62,10 @@ export default function IndexPage() {
 
   return (
     <ClientPageWrapper>
+      <Particles
+        className="absolute inset-0 -z-10 animate-fade-in"
+        quantity={1000}
+      />
       <Script
         id="schema-person"
         type="application/ld+json"
@@ -72,6 +76,7 @@ export default function IndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
+
 
       <section className="space-y-6 pb-8 pt-6 mb-0 md:pb-12 md:py-20 lg:py-32 h-screen flex items-center">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center mt-20">
