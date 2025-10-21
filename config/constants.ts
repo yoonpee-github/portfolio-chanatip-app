@@ -76,7 +76,8 @@ export type ValidCategory =
   | "Process Management"
   | "Data Analytics"
   | "Inventory Management"
-  | "Clinic Management";
+  | "Clinic Management"
+  | "E-Commerce Platform";
 
 export type ValidExpType = "Internal Systems" | "External Systems (Clients)";
 

@@ -47,8 +47,8 @@ export const Projects: ProjectInterface[] = [
       "Django",
       "MySQL",
     ],
-    startDate: new Date("2024-08-01"),
-    endDate: new Date("2024-11-01"),
+    startDate: new Date("2025-04-01"),
+    endDate: new Date("2025-05-30"),
     companyLogoImg: "/projects/dentallight/logo.png",
     pagesInfoArr: [
       {
@@ -131,8 +131,8 @@ export const Projects: ProjectInterface[] = [
       "Django",
       "MySQL",
     ],
-    startDate: new Date("2021-07-01"),
-    endDate: new Date("2022-07-01"),
+    startDate: new Date("2025-06-01"),
+    endDate: new Date("2025-07-09"),
     companyLogoImg: "/projects/operations_monitoring/logo.png",
     pagesInfoArr: [
       {
@@ -218,8 +218,8 @@ export const Projects: ProjectInterface[] = [
       "Django",
       "MySQL",
     ],
-    startDate: new Date("2021-07-14"),
-    endDate: new Date("2022-07-01"),
+    startDate: new Date("2025-07-10"),
+    endDate: new Date("2025-08-30"),
     companyLogoImg: "/projects/stock/logo.png",
     pagesInfoArr: [
       {
@@ -297,8 +297,8 @@ export const Projects: ProjectInterface[] = [
       "Django",
       "MySQL",
     ],
-    startDate: new Date("2022-03-01"),
-    endDate: new Date("2022-07-01"),
+    startDate: new Date("2025-09-01"),
+    endDate: new Date("2025-09-14"),
     companyLogoImg: "/projects/photo/logo.png",
     pagesInfoArr: [
       {
@@ -380,8 +380,8 @@ export const Projects: ProjectInterface[] = [
       "Django",
       "MySQL",
     ],
-    startDate: new Date("2022-03-01"),
-    endDate: new Date("2022-07-01"),
+    startDate: new Date("2025-09-15"),
+    endDate: new Date("2025-10-14"),
     companyLogoImg: "/projects/queue/logo.png",
     pagesInfoArr: [
       {
@@ -431,6 +431,89 @@ export const Projects: ProjectInterface[] = [
         "Integrated billing module to generate invoices automatically after treatments.",
         "Leveraged Vue.js, Node.js, Python and MySQL for real-time and scalable operations.",
         "Improved customer experience by reducing wait times and ensuring transparency.",
+      ],
+    },
+  },
+  {
+    id: "ecommerce",
+    companyName: "Ecommerce (Mini Project Hobby)",
+    type: "External Systems (Clients)",
+    category: ["Web Dev", "Full Stack", "E-Commerce Platform"],
+    shortDescription:
+      "Developed a full-stack e-commerce platform with product management, shopping cart, discount engine, and order tracking system for both customers and admins.",
+    websiteLink: "",
+    githubLink: "",
+    techStack: [
+      "Next.js",
+      "Tailwind CSS",
+      "Node.js",
+      "CSS 3",
+      "React",
+      "Vercel",
+      "Typescript",
+      "Javascript",
+    ],
+    startDate: new Date("2025-10-10"),
+    endDate: new Date("2025-10-15"),
+    companyLogoImg: "/projects/ecommerce/logo.png",
+    pagesInfoArr: [
+      {
+        title: "Product Listing & Filtering",
+        description:
+          "Displays products with dynamic filtering by category, price, and rating. Users can view product details, images, and add items to their shopping cart.",
+        imgArr: [
+          "/projects/ecommerce/ecommerce_1.png",
+          "/projects/ecommerce/ecommerce_2.png",
+        ],
+      },
+      {
+        title: "Shopping Cart & Checkout",
+        description:
+          "Interactive cart system that allows users to modify quantities, apply coupons, use reward points, and view real-time discount calculations before checkout.",
+        imgArr: [
+          "/projects/ecommerce/ecommerce_3.png",
+          "/projects/ecommerce/ecommerce_4.png",
+        ],
+      },
+      {
+        title: "Discount & Promotion Engine",
+        description:
+          "Modular discount engine supporting coupon codes, on-top promotions, and seasonal campaigns with configurable rules and thresholds.",
+        imgArr: [
+          "/projects/ecommerce/ecommerce_5.png",
+          "/projects/ecommerce/ecommerce_6.png",
+        ],
+      },
+      {
+        title: "Order Management Dashboard",
+        description:
+          "Admin dashboard for viewing, updating, and managing customer orders, payment statuses, and delivery progress in real time.",
+        imgArr: [
+          "/projects/ecommerce/ecommerce_7.png",
+          "/projects/ecommerce/ecommerce_8.png",
+        ],
+      },
+      {
+        title: "Customer Points & Loyalty System",
+        description:
+          "Integrated points system where customers earn and redeem points for future purchases, encouraging repeat engagement and customer loyalty.",
+        imgArr: ["/projects/ecommerce/ecommerce_9.png"],
+      },
+    ],
+    descriptionDetails: {
+      paragraphs: [
+        "I developed a comprehensive e-commerce platform designed for businesses to manage their online sales efficiently. The system includes product listings, shopping cart management, discount configurations, and secure checkout workflows.",
+        "Customers can browse products, apply discounts, and complete purchases seamlessly through an optimized checkout process with coupon and loyalty point support.",
+        "A flexible discount engine was built to support multiple types of promotions including coupons, on-top discounts, and seasonal campaigns, making marketing management easier.",
+        "Developed using Next.js and Node.js with TypeScript for performance and maintainability, the system integrates a real-time backend API to handle transactions and user sessions efficiently.",
+      ],
+      bullets: [
+        "Developed full-stack e-commerce platform with product catalog and checkout system.",
+        "Implemented discount engine with coupons, points, and seasonal promotions.",
+        "Built interactive shopping cart with real-time price and discount calculations.",
+        "Integrated loyalty points system to reward customers and increase engagement.",
+        "Used Next.js, Node.js, and TypeScript for scalable and performant architecture.",
+        "Improved shopping experience with modern UI and responsive design using Ant Design.",
       ],
     },
   },
