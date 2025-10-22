@@ -1,10 +1,12 @@
-import { Norican } from "next/font/google";
-import Link from "next/link";
-import * as React from "react";
+"use client";
 
+import { useLang } from "@/providers/lang-provider";
 import { siteConfig } from "@/config/site";
 import { useLockBody } from "@/hooks/use-lock-body";
 import { cn } from "@/lib/utils";
+import { Norican } from "next/font/google";
+import Link from "next/link";
+import * as React from "react";
 
 interface MobileNavProps {
   items: any[];
@@ -20,6 +22,7 @@ const norican = Norican({
 
 export function MobileNav({ items, children }: MobileNavProps) {
   useLockBody();
+  const { lang } = useLang();
 
   return (
     <div
@@ -43,7 +46,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
                 item.disabled && "cursor-not-allowed opacity-60"
               )}
             >
-              {item.title}
+              {item.title[lang]}
             </Link>
           ))}
         </nav>
