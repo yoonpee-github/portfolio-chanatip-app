@@ -5,18 +5,32 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatDate(input: string | number): string {
+/**
+ * @param input
+ * @param lang
+ */
+export function formatDate(
+  input: string | number,
+  lang: "en" | "th" = "en"
+): string {
   const date = new Date(input);
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString(lang === "th" ? "th-TH" : "en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
   });
 }
 
-export function formatDateFromObj(input: Date): string {
+/**
+ * @param input
+ * @param lang
+ */
+export function formatDateFromObj(
+  input: Date,
+  lang: "en" | "th" = "en"
+): string {
   const date = new Date(input);
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString(lang === "th" ? "th-TH" : "en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",

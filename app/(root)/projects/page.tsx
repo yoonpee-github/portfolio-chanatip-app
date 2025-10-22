@@ -1,15 +1,11 @@
-import { Metadata } from "next";
+"use client";
 
 import PageContainer from "@/components/common/page-container";
 import ProjectCard from "@/components/projects/project-card";
 import { ResponsiveTabs } from "@/components/ui/responsive-tabs";
 import { pagesConfig } from "@/config/pages";
 import { Projects } from "@/config/projects";
-
-export const metadata: Metadata = {
-  title: pagesConfig.projects.metadata.title,
-  description: pagesConfig.projects.metadata.description,
-};
+import { useLang } from "@/providers/lang-provider";
 
 const renderContent = (tabVal: string) => {
   let projectArr = Projects;
@@ -31,28 +27,30 @@ const renderContent = (tabVal: string) => {
 };
 
 export default function ProjectsPage() {
+  const { lang } = useLang();
+
   const tabItems = [
     {
       value: "all",
-      label: "All",
+      label: lang === "th" ? "ทั้งหมด" : "All",
       content: renderContent("all"),
     },
     {
       value: "internal",
-      label: "Internal Systems",
+      label: lang === "th" ? "ระบบภายใน" : "Internal Systems",
       content: renderContent("internal"),
     },
     {
       value: "external",
-      label: "External Systems (Clients)",
+      label: lang === "th" ? "ระบบลูกค้า" : "External Systems (Clients)",
       content: renderContent("external"),
     },
   ];
 
   return (
     <PageContainer
-      title={pagesConfig.projects.title}
-      description={pagesConfig.projects.description}
+      title={pagesConfig.projects.title?.[lang] || ""}
+      description={pagesConfig.projects.description?.[lang] || ""}
     >
       <ResponsiveTabs items={tabItems} defaultValue="all" />
     </PageContainer>

@@ -1,27 +1,27 @@
-export const routesConfig: any = {
+export const routesConfig = {
   mainNav: [
     {
-      title: "About Me",
+      title: { en: "About Me", th: "เกี่ยวกับฉัน" },
       href: "/aboutme",
     },
     {
-      title: "Experience",
+      title: { en: "Experience", th: "ประสบการณ์" },
       href: "/experience",
     },
     {
-      title: "Skills",
+      title: { en: "Skills", th: "ทักษะ" },
       href: "/skills",
     },
     {
-      title: "Projects",
+      title: { en: "Projects", th: "ผลงาน" },
       href: "/projects",
     },
     {
-      title: "Resume",
+      title: { en: "Resume", th: "ประวัติย่อ" },
       href: "/resume",
     },
     {
-      title: "Contact",
+      title: { en: "Contact", th: "ติดต่อ" },
       href: "/contact",
     },
   ],

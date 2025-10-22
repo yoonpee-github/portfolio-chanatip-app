@@ -5,7 +5,6 @@ import { siteConfig } from "@/config/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
 
-  // Main pages
   const routes = [
     {
       url: `${baseUrl}`,

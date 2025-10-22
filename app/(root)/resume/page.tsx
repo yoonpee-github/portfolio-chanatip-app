@@ -1,18 +1,16 @@
+"use client";
+
 import PageContainer from "@/components/common/page-container";
 import { pagesConfig } from "@/config/pages";
-import { Metadata } from "next";
+import { useLang } from "@/providers/lang-provider";
 import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: pagesConfig.resume.metadata.title,
-  description: pagesConfig.resume.metadata.description,
-};
-
 export default function ResumePage() {
+  const { lang } = useLang();
   return (
     <PageContainer
-      title={pagesConfig.resume.title}
-      description={pagesConfig.resume.description}
+      title={pagesConfig.resume.title[lang]}
+      description={pagesConfig.resume.description[lang]}
     >
       <div className="flex flex-col items-center">
         <div className="w-full max-w-4xl shadow-lg rounded-lg overflow-hidden border">
@@ -30,7 +28,7 @@ export default function ResumePage() {
           download
           className="inline-flex items-center px-6 py-3 mt-6 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20 hover:bg-white/30 transition"
         >
-          Download Resume
+          {lang === "th" ? "ดาวน์โหลด เรซูเม่" : "Download Resume"}
         </a>
       </div>
     </PageContainer>

@@ -1,7 +1,4 @@
-import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+"use client";
 
 import { AnimatedSection } from "@/components/common/animated-section";
 import { ClientPageWrapper } from "@/components/common/client-page-wrapper";
@@ -11,7 +8,10 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import ChipContainer from "@/components/ui/chip-container";
 import { ResponsiveTabs } from "@/components/ui/responsive-tabs";
 import { experiences } from "@/config/experience";
-import { siteConfig } from "@/config/site";
+import { useLang } from "@/providers/lang-provider";
+import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 interface ExperienceDetailPageProps {
   params: {
@@ -19,41 +19,21 @@ interface ExperienceDetailPageProps {
   };
 }
 
-// Helper function to extract year from date
 const getYearFromDate = (date: Date): string => {
   return new Date(date).getFullYear().toString();
 };
 
-// Helper function to get duration text
 const getDurationText = (
   startDate: Date,
-  endDate: Date | "Present"
+  endDate: { en: string | Date; th: string | Date },
+  lang: "en" | "th"
 ): string => {
   const startYear = getYearFromDate(startDate);
+  const endValue = endDate[lang];
   const endYear =
-    typeof endDate === "string" ? "Present" : getYearFromDate(endDate);
+    typeof endValue === "string" ? endValue : getYearFromDate(endValue);
   return `${startYear} - ${endYear}`;
 };
-
-export async function generateMetadata({
-  params,
-}: ExperienceDetailPageProps): Promise<Metadata> {
-  const experience = experiences.find((c) => c.id === params.expId);
-
-  if (!experience) {
-    return {
-      title: "Experience Not Found",
-    };
-  }
-
-  return {
-    title: `${experience.position} at ${experience.company} | Experience`,
-    description: `Detailed information about my role as ${experience.position} at ${experience.company}.`,
-    alternates: {
-      canonical: `${siteConfig.url}/experience/${params.expId}`,
-    },
-  };
-}
 
 export default function ExperienceDetailPage({
   params,
@@ -64,18 +44,20 @@ export default function ExperienceDetailPage({
     redirect("/experience");
   }
 
+  const { lang } = useLang();
+
   const tabItems = [
     {
       value: "summary",
-      label: "Summary",
+      label: lang === "th" ? "สรุป" : "Summary",
       content: (
         <AnimatedSection delay={0.3}>
           <div>
             <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
-              Role Summary
+              {lang === "th" ? "รายละเอียดบทบาท" : "Role Summary"}
             </h3>
             <ul className="space-y-3">
-              {experience.description.map((desc, idx) => (
+              {experience.description[lang].map((desc, idx) => (
                 <li
                   key={idx}
                   className="text-base leading-relaxed flex items-start gap-3"
@@ -91,15 +73,15 @@ export default function ExperienceDetailPage({
     },
     {
       value: "achievements",
-      label: "Achievements",
+      label: lang === "th" ? "ผลงานเด่น" : "Achievements",
       content: (
         <AnimatedSection delay={0.3}>
           <div>
             <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
-              Key Achievements
+              {lang === "th" ? "ผลงานสำคัญ" : "Key Achievements"}
             </h3>
             <ul className="space-y-3">
-              {experience.achievements.map((achievement, idx) => (
+              {experience.achievements[lang].map((achievement, idx) => (
                 <li
                   key={idx}
                   className="text-base leading-relaxed flex items-start gap-3"
@@ -115,17 +97,20 @@ export default function ExperienceDetailPage({
     },
     {
       value: "skills",
-      label: "Skills",
+      label: lang === "th" ? "ทักษะ" : "Skills",
       content: (
         <AnimatedSection delay={0.3}>
           <div>
             <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
-              Technologies & Skills
+              {lang === "th"
+                ? "เทคโนโลยีและทักษะที่ใช้"
+                : "Technologies & Skills"}
             </h3>
             <ChipContainer textArr={experience.skills} />
             <p className="mt-4 text-sm text-muted-foreground">
-              These are the primary technologies and skills utilized during my
-              time at {experience.company}
+              {lang === "th"
+                ? `เทคโนโลยีและทักษะหลักที่ใช้ในระหว่างทำงานที่ ${experience.company.th}`
+                : `These are the primary technologies and skills utilized during my time at ${experience.company.en}`}
             </p>
           </div>
         </AnimatedSection>
@@ -140,7 +125,7 @@ export default function ExperienceDetailPage({
           <Button variant="ghost" size="sm" className="mb-4" asChild>
             <Link href="/experience">
               <Icons.chevronLeft className="mr-2 h-4 w-4" />
-              Back to Experience
+              {lang === "th" ? "ย้อนกลับ" : "Back to Experience"}
             </Link>
           </Button>
         </AnimatedSection>
@@ -155,7 +140,7 @@ export default function ExperienceDetailPage({
                       <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg border-2 border-border overflow-hidden bg-white flex-shrink-0">
                         <Image
                           src={experience.logo}
-                          alt={experience.company}
+                          alt={experience.company[lang]}
                           width={80}
                           height={80}
                           className="w-full h-full object-contain p-2"
@@ -164,11 +149,11 @@ export default function ExperienceDetailPage({
                     )}
                     <div className="flex-1 text-center sm:text-left">
                       <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
-                        {experience.position}
+                        {experience.position[lang]}
                       </h1>
                       <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
                         <span className="text-md font-medium text-muted-foreground">
-                          {experience.company}
+                          {experience.company[lang]}
                         </span>
                         {experience.companyUrl && (
                           <a
@@ -182,7 +167,7 @@ export default function ExperienceDetailPage({
                         )}
                       </div>
                       <p className="text-muted-foreground">
-                        {experience.location}
+                        {experience.location[lang]}
                       </p>
                     </div>
                   </div>
@@ -190,7 +175,8 @@ export default function ExperienceDetailPage({
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20">
                       {getDurationText(
                         experience.startDate,
-                        experience.endDate
+                        experience.endDate,
+                        lang
                       )}
                     </span>
                   </div>
@@ -208,7 +194,7 @@ export default function ExperienceDetailPage({
           <Button variant="outline" asChild>
             <Link href="/experience">
               <Icons.chevronLeft className="mr-2 h-4 w-4" />
-              View All Experience
+              {lang === "th" ? "ดูประสบการณ์ทั้งหมด" : "View All Experience"}
             </Link>
           </Button>
         </AnimatedSection>

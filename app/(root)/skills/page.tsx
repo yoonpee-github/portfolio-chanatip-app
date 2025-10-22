@@ -1,15 +1,12 @@
+"use client";
+
 import { Icons } from "@/components/common/icons";
 import PageContainer from "@/components/common/page-container";
 import SkillsCard from "@/components/skills/skills-card";
 import { ResponsiveTabs } from "@/components/ui/responsive-tabs";
 import { pagesConfig } from "@/config/pages";
 import { skills } from "@/config/skills";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: pagesConfig.skills.metadata.title,
-  description: pagesConfig.skills.metadata.description,
-};
+import { useLang } from "@/providers/lang-provider";
 
 const renderContent = (tabVal: string) => {
   let skillArr = skills;
@@ -35,13 +32,14 @@ const renderContent = (tabVal: string) => {
 };
 
 export default function SkillsPage() {
+  const { lang } = useLang();
   const tabItems = [
     {
       value: "all",
       label: (
         <>
           <Icons.call className="mr-2 h-4 w-4" />
-          All
+          {lang === "th" ? "ทั้งหมด" : "All"}
         </>
       ),
       content: renderContent("all"),
@@ -51,7 +49,7 @@ export default function SkillsPage() {
       label: (
         <>
           <Icons.react className="mr-2 h-4 w-4" />
-          Frontend Development
+          {lang === "th" ? "เฟรมเวิร์กฝั่งผู้ใช้" : "Frontend Development"}
         </>
       ),
       content: renderContent("Frontend"),
@@ -61,7 +59,7 @@ export default function SkillsPage() {
       label: (
         <>
           <Icons.python className="mr-2 h-4 w-4" />
-          Backend Development
+          {lang === "th" ? "เฟรมเวิร์กฝั่งเซิร์ฟเวอร์" : "Backend Development"}
         </>
       ),
       content: renderContent("Backend"),
@@ -71,7 +69,7 @@ export default function SkillsPage() {
       label: (
         <>
           <Icons.postgresql className="mr-2 h-4 w-4" />
-          Database
+          {lang === "th" ? "ฐานข้อมูล" : "Database"}
         </>
       ),
       content: renderContent("Database"),
@@ -81,7 +79,7 @@ export default function SkillsPage() {
       label: (
         <>
           <Icons.amazonaws className="mr-2 h-4 w-4" />
-          Cloud & DevOps
+          {lang === "th" ? "คลาวด์และ DevOps" : "Cloud & DevOps"}
         </>
       ),
       content: renderContent("Cloud"),
@@ -91,7 +89,7 @@ export default function SkillsPage() {
       label: (
         <>
           <Icons.code className="mr-2 h-4 w-4" />
-          Tools
+          {lang === "th" ? "เครื่องมือ" : "Tools"}
         </>
       ),
       content: renderContent("Tool"),
@@ -100,10 +98,9 @@ export default function SkillsPage() {
 
   return (
     <PageContainer
-      title={pagesConfig.skills.title}
-      description={pagesConfig.skills.description}
+      title={pagesConfig.skills.title[lang]}
+      description={pagesConfig.skills.description[lang]}
     >
-      {/* <SkillsCard skills={skills} /> */}
       <ResponsiveTabs items={tabItems} defaultValue="all" />
     </PageContainer>
   );

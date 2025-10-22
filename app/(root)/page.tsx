@@ -1,3 +1,5 @@
+"use client";
+
 import AboutmeCard from "@/components/aboutme/aboutme-card";
 import { AnimatedSection } from "@/components/common/animated-section";
 import { AnimatedText } from "@/components/common/animated-text";
@@ -5,9 +7,9 @@ import { ClientPageWrapper } from "@/components/common/client-page-wrapper";
 import { Icons } from "@/components/common/icons";
 import ExperienceCard from "@/components/experience/experience-card";
 import { ContactForm } from "@/components/forms/contact-form";
-import Particles from "@/components/particles/particles";
+// import Particles from "@/components/particles/particles";
 import ProjectCard from "@/components/projects/project-card";
-import Rating from "@/components/skills/rating";
+import SkillsCard from "@/components/skills/skills-card";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { featuredAboutme } from "@/config/aboutme";
 import { experiences } from "@/config/experience";
@@ -16,22 +18,14 @@ import { featuredProjects } from "@/config/projects";
 import { siteConfig } from "@/config/site";
 import { featuredSkills } from "@/config/skills";
 import { cn } from "@/lib/utils";
+import { useLang } from "@/providers/lang-provider";
 import profileImg from "@/public/profile-img.jpg";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
-export const metadata: Metadata = {
-  title: `${pagesConfig.home.metadata.title} | Developer Portfolio`,
-  description: `${pagesConfig.home.metadata.description} A passionate full stack developer specializing in building modern, scalable, and user-focused web applications.`,
-  alternates: {
-    canonical: siteConfig.url,
-  },
-};
-
 export default function IndexPage() {
-  // Structured data for personal portfolio
+  const { lang } = useLang();
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -77,7 +71,6 @@ export default function IndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
 
-
       <section className="space-y-6 pb-8 pt-6 mb-0 md:pb-12 md:py-20 lg:py-32 h-screen flex items-center">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center mt-20">
           <Image
@@ -94,19 +87,22 @@ export default function IndexPage() {
             delay={0.2}
             className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Chanatip Sombatanurak
+            {lang === "th" ? "ชนาธิป สมบัติอนุรักษ์" : "Chanatip Sombatanurak"}
           </AnimatedText>
           <AnimatedText
             as="h3"
             delay={0.4}
             className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl"
           >
-            Full Stack Developer
+            {lang === "th"
+              ? "นักพัฒนาซอฟต์แวร์ครบวงจร"
+              : "Full Stack Developer"}
           </AnimatedText>
           <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
-              A passionate full stack developer specializing in building modern,
-              scalable, and user-focused web applications.
+              {lang === "th"
+                ? "นักพัฒนาซอฟต์แวร์ครบวงจร ที่หลงใหลในการสร้างเว็บแอปพลิเคชันที่ทันสมัย ยืดหยุ่นได้ดี และมอบประสบการณ์การใช้งานที่ยอดเยี่ยมแก่ผู้ใช้"
+                : "A passionate full stack developer specializing in building modern, scalable, and user-focused web applications."}
             </p>
           </div>
 
@@ -133,7 +129,8 @@ export default function IndexPage() {
                 )}
                 aria-label="Contact Chanatip Sombatanurak"
               >
-                <Icons.contact className="w-4 h-4 mr-2" /> Contact
+                <Icons.contact className="w-4 h-4 mr-2" />
+                {lang === "th" ? "ติดต่อ" : "Contact"}
               </Link>
             </AnimatedText>
           </div>
@@ -147,33 +144,31 @@ export default function IndexPage() {
         className="container space-y-6 bg-muted py-10 my-14"
         id="aboutme"
       >
-        {/* Header Section */}
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <AnimatedText
             as="h2"
             className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
           >
-            {pagesConfig.aboutme.title}
+            {pagesConfig.aboutme.title[lang]}
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
           >
-            {pagesConfig.aboutme.description}
+            {pagesConfig.aboutme.description[lang]}
           </AnimatedText>
         </div>
 
-        {/* Cards Section */}
         <div className="mx-auto justify-center gap-6 md:w-full lg:grid-cols-3">
           <AboutmeCard aboutmes={featuredAboutme} />
         </div>
 
-        {/* View All Button */}
         <AnimatedText delay={0.4} className="flex justify-center">
           <Link href="/aboutme">
             <Button variant="outline" className="rounded-xl">
-              <Icons.chevronDown className="mr-2 h-4 w-4" /> View Full Profile
+              <Icons.chevronDown className="mr-2 h-4 w-4" />
+              {lang === "th" ? "ดูเกี่ยวกับฉันทั้งหมด" : "View Full About Me"}
             </Button>
           </Link>
         </AnimatedText>
@@ -188,14 +183,14 @@ export default function IndexPage() {
             as="h2"
             className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
           >
-            {pagesConfig.experience.title}
+            {pagesConfig.experience.title[lang]}
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
           >
-            {pagesConfig.experience.description}
+            {pagesConfig.experience.description[lang]}
           </AnimatedText>
         </div>
         <div className="mx-auto grid justify-center gap-4 md:w-full lg:grid-cols-3">
@@ -212,7 +207,8 @@ export default function IndexPage() {
         <AnimatedText delay={0.4} className="flex justify-center">
           <Link href="/experience">
             <Button variant={"outline"} className="rounded-xl">
-              <Icons.chevronDown className="mr-2 h-4 w-4" /> View All Experience
+              <Icons.chevronDown className="mr-2 h-4 w-4" />
+              {lang === "th" ? "ดูประสบการณ์ทั้งหมด" : "View All Experience"}
             </Button>
           </Link>
         </AnimatedText>
@@ -226,40 +222,24 @@ export default function IndexPage() {
             as="h2"
             className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
           >
-            {pagesConfig.skills.title}
+            {pagesConfig.skills.title[lang]}
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
           >
-            {pagesConfig.skills.description}
+            {pagesConfig.skills.description[lang]}
           </AnimatedText>
         </div>
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredSkills.map((skill) => (
-            <div
-              key={skill.name}
-              className="relative overflow-hidden rounded-lg border bg-background p-2"
-            >
-              <div className="flex h-[250px] flex-col justify-between rounded-md p-6 sm:h-[250px]">
-                <skill.icon size={50} />
-                <div className="space-y-2">
-                  <h3 className="font-bold">{skill.name}</h3>
-                  <p className="text-xs text-primary/60">{skill.category}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {skill.description}
-                  </p>
-                  <Rating stars={skill.rating} />
-                </div>
-              </div>
-            </div>
-          ))}
+          <SkillsCard skills={featuredSkills} />
         </div>
         <AnimatedText delay={0.4} className="flex justify-center">
           <Link href="/skills">
             <Button variant={"outline"} className="rounded-xl">
-              <Icons.chevronDown className="mr-2 h-4 w-4" /> View All Skills
+              <Icons.chevronDown className="mr-2 h-4 w-4" />
+              {lang === "th" ? "ดูทักษะทั้งหมด" : "View All Skills"}
             </Button>
           </Link>
         </AnimatedText>
@@ -275,14 +255,14 @@ export default function IndexPage() {
             as="h2"
             className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
           >
-            {pagesConfig.projects.title}
+            {pagesConfig.projects.title[lang]}
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
           >
-            {pagesConfig.projects.description}
+            {pagesConfig.projects.description[lang]}
           </AnimatedText>
         </div>
         <div className="mx-auto grid justify-center gap-4 md:w-full lg:grid-cols-3">
@@ -299,7 +279,8 @@ export default function IndexPage() {
         <AnimatedText delay={0.4} className="flex justify-center">
           <Link href="/projects">
             <Button variant={"outline"} className="rounded-xl">
-              <Icons.chevronDown className="mr-2 h-4 w-4" /> View All Projects
+              <Icons.chevronDown className="mr-2 h-4 w-4" />
+              {lang === "th" ? "ดูผลงานทั้งหมด" : "View All Projects"}
             </Button>
           </Link>
         </AnimatedText>
@@ -314,14 +295,14 @@ export default function IndexPage() {
             as="h2"
             className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
           >
-            {pagesConfig.resume.title}
+            {pagesConfig.resume.title[lang]}
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
           >
-            {pagesConfig.resume.description}
+            {pagesConfig.resume.description[lang]}
           </AnimatedText>
         </div>
         <div className="flex flex-col items-center">
@@ -339,7 +320,8 @@ export default function IndexPage() {
         <AnimatedText delay={0.4} className="flex justify-center">
           <Link href="/resume">
             <Button variant={"outline"} className="rounded-xl">
-              <Icons.chevronDown className="mr-2 h-4 w-4" /> View Full Resume
+              <Icons.chevronDown className="mr-2 h-4 w-4" />
+              {lang === "th" ? "ดูผลประวัติย่อทั้งหมด" : "View All Projects"}
             </Button>
           </Link>
         </AnimatedText>
@@ -354,14 +336,14 @@ export default function IndexPage() {
             as="h2"
             className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
           >
-            {pagesConfig.contact.title}
+            {pagesConfig.contact.title[lang]}
           </AnimatedText>
           <AnimatedText
             as="p"
             delay={0.2}
             className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
           >
-            {pagesConfig.contact.description}
+            {pagesConfig.contact.description[lang]}
           </AnimatedText>
         </div>
         <div className="flex flex-col lg:flex-row">

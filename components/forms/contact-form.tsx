@@ -1,10 +1,5 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-
 import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +14,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useModalStore } from "@/hooks/use-modal-store";
+import { useLang } from "@/providers/lang-provider";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -32,6 +32,7 @@ const formSchema = z.object({
 });
 
 export function ContactForm() {
+  const { lang } = useLang();
   const storeModal = useModalStore();
   const [loading, setLoading] = useState(false);
 
@@ -86,15 +87,21 @@ export function ContactForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>{lang === "th" ? "ชื่อ" : "Name"}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter your name"
+                  placeholder={
+                    lang === "th" ? "ใส่ชื่อของคุณ" : "Enter your name"
+                  }
                   {...field}
                   disabled={loading}
                 />
               </FormControl>
-              <FormDescription>Please enter your full name.</FormDescription>
+              <FormDescription>
+                {lang === "th"
+                  ? "กรุณากรอก ชื่อ-นามสกุล ของคุณ"
+                  : "Please enter your full name."}
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -104,10 +111,12 @@ export function ContactForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>{lang === "th" ? "อีเมล" : "Email"}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter your email"
+                  placeholder={
+                    lang === "th" ? "ใส่อีเมลของคุณ" : "Enter your email"
+                  }
                   {...field}
                   disabled={loading}
                 />
@@ -121,10 +130,12 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>{lang === "th" ? "ข้อความ" : "Message"}</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Enter your message"
+                  placeholder={
+                    lang === "th" ? "ป้อนข้อความของคุณ" : "Enter your message"
+                  }
                   {...field}
                   disabled={loading}
                 />
@@ -138,10 +149,16 @@ export function ContactForm() {
           name="social"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Social (optional)</FormLabel>
+              <FormLabel>
+                {lang === "th" ? "โซเชียล (ไม่บังคับ)" : "Social (optional)"}
+              </FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Link for social account"
+                  placeholder={
+                    lang === "th"
+                      ? "ลิงค์สำหรับบัญชีโซเชียล"
+                      : "Link for social account"
+                  }
                   {...field}
                   disabled={loading}
                 />
@@ -151,7 +168,13 @@ export function ContactForm() {
           )}
         />
         <Button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Submit"}
+          {loading
+            ? lang === "th"
+              ? "กำลังส่ง..."
+              : "Submitting..."
+            : lang === "th"
+              ? "ส่ง"
+              : "Submit"}
         </Button>
       </form>
     </Form>

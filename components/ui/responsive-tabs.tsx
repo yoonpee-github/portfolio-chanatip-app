@@ -37,7 +37,6 @@ export function ResponsiveTabs({
 
   return (
     <div className={cn("w-full", className)}>
-      {/* Mobile: Dropdown */}
       <div className="md:hidden mb-4">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -63,7 +62,6 @@ export function ResponsiveTabs({
         </DropdownMenu>
       </div>
 
-      {/* Desktop: Tabs */}
       <div className="hidden md:block">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList
@@ -86,7 +84,6 @@ export function ResponsiveTabs({
         </Tabs>
       </div>
 
-      {/* Mobile: Content */}
       <div className="md:hidden">{activeItem?.content}</div>
     </div>
   );

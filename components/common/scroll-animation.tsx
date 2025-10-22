@@ -20,13 +20,11 @@ export const ScrollAnimation = ({
     offset: ["start end", "end start"],
   });
 
-  // Create transform values outside of any function
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.2, 1]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
   const xOffset = useTransform(scrollYProgress, [0, 0.5], [-50, 0]);
   const rotation = useTransform(scrollYProgress, [0, 0.5], [-10, 0]);
 
-  // Get the appropriate animation style based on the effect
   const animationStyle = (() => {
     switch (effect) {
       case "fade":

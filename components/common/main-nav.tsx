@@ -5,7 +5,7 @@ import { Norican } from "next/font/google";
 import Link from "next/link";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import * as React from "react";
-
+import { useLang } from "@/providers/lang-provider";
 import { Icons } from "@/components/common/icons";
 import { MobileNav } from "@/components/common/mobile-nav";
 import { siteConfig } from "@/config/site";
@@ -23,7 +23,6 @@ const norican = Norican({
   display: "swap",
 });
 
-// Animation variants for the navigation items
 const navItemVariants = {
   hidden: { opacity: 0, y: -20 },
   visible: (i: number) => ({
@@ -41,6 +40,7 @@ export function MainNav({ items, children }: MainNavProps) {
   const segment = useSelectedLayoutSegment();
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
   const pathname = usePathname();
+  const { lang } = useLang();
 
   React.useEffect(() => {
     setShowMobileMenu(false);
@@ -81,7 +81,7 @@ export function MainNav({ items, children }: MainNavProps) {
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}
               >
-                {item.title}
+                {item.title[lang]}
               </Link>
             </motion.div>
           ))}

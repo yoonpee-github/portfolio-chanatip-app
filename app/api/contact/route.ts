@@ -1,45 +1,3 @@
-// import { NextResponse } from "next/server";
-
-// export async function POST(req: Request) {
-//   const formLink = process.env.GOOGLE_FORM_LINK;
-//   if (!formLink) {
-//     return new NextResponse("Please configure the env variables", {
-//       status: 500,
-//     });
-//   }
-
-//   // configure this according to your google form
-//   const fieldIdName = process.env.GOOGLE_FORM_FIELD_ID_NAME;
-//   const fieldIdEmail = process.env.GOOGLE_FORM_FIELD_ID_EMAIL;
-//   const fieldIdMessage = process.env.GOOGLE_FORM_FIELD_ID_MESSAGE;
-//   const fieldIdSocial = process.env.GOOGLE_FORM_FIELD_ID_SOCIAL;
-
-//   try {
-//     const body = await req.json();
-//     const { name, message, social, email } = body;
-//     console.log("Received body:", body);
-//     console.log("name:", name);
-//     console.log("email:", email);
-//     console.log("message:", message);
-//     console.log("social:", social);
-
-//     const res = await fetch(
-//       `${formLink}/formResponse?${fieldIdName}=${encodeURIComponent(name)}&${fieldIdEmail}=${encodeURIComponent(email)}&${fieldIdMessage}=${encodeURIComponent(message)}&${fieldIdSocial}=${encodeURIComponent(social || "")}`,
-//       {
-//         method: "POST", // ต้อง POST
-//         headers: {
-//           "Content-Type": "application/x-www-form-urlencoded", // Google Form ต้องการ urlencoded
-//         },
-//       }
-//     );
-
-//     return NextResponse.json("Success!");
-//   } catch (error) {
-//     console.log(error);
-//     return new NextResponse("Internal error", { status: 500 });
-//   }
-// }
-
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -72,20 +30,18 @@ export async function POST(req: Request) {
       );
     }
 
-    // ✅ สร้าง transporter ด้วย Gmail SMTP
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.GMAIL_USER, // Gmail ของคุณ
-        pass: process.env.GMAIL_PASS, // App password ของ Gmail
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
       },
     });
 
-    // ✅ กำหนดข้อมูลอีเมล
     const mailOptions = {
       from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
-      replyTo: email, // เวลา reply จะไปหาคนที่กรอกฟอร์ม
-      to: process.env.GMAIL_USER, // ส่งเข้ากล่อง Gmail ของคุณเอง
+      replyTo: email,
+      to: process.env.GMAIL_USER,
       subject: `📩 New Contact from ${name}`,
       text: `
 Name: ${name}
@@ -105,7 +61,6 @@ ${message}
       `,
     };
 
-    // ✅ ส่งอีเมล
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json(

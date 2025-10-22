@@ -1,27 +1,27 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-
 import { AnimatedSection } from "@/components/common/animated-section";
 import { Icons } from "@/components/common/icons";
 import { Button } from "@/components/ui/button";
 import { ExperienceInterface } from "@/config/experience";
+import { useLang } from "@/providers/lang-provider";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-// Helper function to extract year from date
 const getYearFromDate = (date: Date): string => {
   return new Date(date).getFullYear().toString();
 };
 
-// Helper function to get duration text
 const getDurationText = (
   startDate: Date,
-  endDate: Date | "Present"
+  endDate: { en: string | Date; th: string | Date },
+  lang: "en" | "th"
 ): string => {
   const startYear = getYearFromDate(startDate);
+  const endValue = endDate[lang];
   const endYear =
-    typeof endDate === "string" ? "Present" : getYearFromDate(endDate);
+    typeof endValue === "string" ? endValue : getYearFromDate(endValue);
   return `${startYear} - ${endYear}`;
 };
 
@@ -30,10 +30,17 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
-  // Sort experiences by date (most recent first)
+  const { lang } = useLang();
+
   const sortedExperiences = [...experiences].sort((a, b) => {
-    const dateA = a.endDate === "Present" ? new Date() : a.endDate;
-    const dateB = b.endDate === "Present" ? new Date() : b.endDate;
+    const dateA =
+      typeof a.endDate[lang] === "string"
+        ? new Date()
+        : (a.endDate[lang] as Date);
+    const dateB =
+      typeof b.endDate[lang] === "string"
+        ? new Date()
+        : (b.endDate[lang] as Date);
     return dateB.getTime() - dateA.getTime();
   });
 
@@ -52,7 +59,7 @@ const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg border-2 border-border overflow-hidden bg-white flex-shrink-0">
                     <Image
                       src={experience.logo}
-                      alt={experience.company}
+                      alt={experience.company[lang]}
                       width={64}
                       height={64}
                       className="w-full h-full object-contain p-2"
@@ -62,18 +69,19 @@ const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                     <h3 className="text-lg sm:text-xl font-bold text-foreground">
-                      {experience.position}
+                      {experience.position[lang]}
                     </h3>
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-primary/10 text-primary border border-primary/20 w-fit">
                       {getDurationText(
                         experience.startDate,
-                        experience.endDate
+                        experience.endDate,
+                        lang
                       )}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-sm font-medium text-muted-foreground">
-                      {experience.company}
+                      {experience.company[lang]}
                     </span>
                     {experience.companyUrl && (
                       <a
@@ -87,10 +95,10 @@ const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
                     )}
                   </div>
                   <p className="text-sm text-muted-foreground mb-2">
-                    {experience.location}
+                    {experience.location[lang]}
                   </p>
                   <p className="text-sm text-muted-foreground line-clamp-2">
-                    {experience.description[0]}
+                    {experience.description[lang][0]}
                   </p>
                 </div>
               </div>
@@ -101,7 +109,7 @@ const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
                 asChild
               >
                 <Link href={`/experience/${experience.id}`}>
-                  View Details
+                  {lang === "th" ? "ดูรายละเอียด" : "View Details"}
                   <Icons.chevronRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
