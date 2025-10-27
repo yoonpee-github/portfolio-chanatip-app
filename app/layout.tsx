@@ -102,7 +102,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <Particles
           className="absolute inset-0 -z-10 pointer-events-none"
-          quantity={4000}
+          quantity={2000}
         />
         <ThemeProvider
           attribute="class"
