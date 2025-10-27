@@ -1,15 +1,15 @@
 "use client";
 
+import { Icons } from "@/components/common/icons";
+import { MobileNav } from "@/components/common/mobile-nav";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { useLang } from "@/providers/lang-provider";
 import { motion } from "framer-motion";
 import { Norican } from "next/font/google";
 import Link from "next/link";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import * as React from "react";
-import { useLang } from "@/providers/lang-provider";
-import { Icons } from "@/components/common/icons";
-import { MobileNav } from "@/components/common/mobile-nav";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
 
 interface MainNavProps {
   items?: any[];
@@ -87,15 +87,23 @@ export function MainNav({ items, children }: MainNavProps) {
           ))}
         </nav>
       ) : null}
-      <motion.button
-        className="flex items-center space-x-2 md:hidden"
-        onClick={() => setShowMobileMenu(!showMobileMenu)}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={navItemVariants}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        {showMobileMenu ? <Icons.close /> : <Icons.menu />}
-        <span className="font-bold">Menu</span>
-      </motion.button>
+        <motion.button
+          className="flex items-center space-x-2 md:hidden"
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {showMobileMenu ? <Icons.close /> : <Icons.menu />}
+          <span className="font-bold">Menu</span>
+        </motion.button>
+      </motion.div>
       {showMobileMenu && items && (
         <MobileNav items={items}>{children}</MobileNav>
       )}
