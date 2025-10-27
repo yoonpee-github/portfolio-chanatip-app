@@ -23,6 +23,7 @@ import profileImg from "@/public/profile-img.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
+import { TypeAnimation } from "react-type-animation";
 
 export default function IndexPage() {
   const { lang } = useLang();
@@ -111,15 +112,15 @@ export default function IndexPage() {
               deletionSpeed={70}
             /> */}
           </AnimatedText>
-          <div className="mt-4 max-w-[42rem] text-center">
+          {/* <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
               {lang === "th"
                 ? "นักพัฒนาซอฟต์แวร์ครบวงจร ที่หลงใหลในการสร้างเว็บแอปพลิเคชันที่ทันสมัย ยืดหยุ่นได้ดี และมอบประสบการณ์การใช้งานที่ยอดเยี่ยมแก่ผู้ใช้"
                 : "A passionate full stack developer specializing in building modern, scalable, and user-focused web applications."}
             </p>
-          </div>
+          </div> */}
 
-          {/* <div className="mt-4 max-w-[42rem] text-center">
+          <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
               <TypeAnimation
                 key={lang}
@@ -145,7 +146,7 @@ export default function IndexPage() {
                 deletionSpeed={60}
               />
             </p>
-          </div> */}
+          </div>
 
           <div className="flex flex-col mt-10 items-center justify-center sm:flex-row sm:space-x-4 gap-3">
             <AnimatedText delay={0.6}>
