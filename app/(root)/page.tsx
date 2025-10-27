@@ -19,7 +19,6 @@ import { featuredSkills } from "@/config/skills";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/providers/lang-provider";
 import profileImg from "@/public/profile-img.jpg";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -55,11 +54,6 @@ export default function IndexPage() {
     },
   };
 
-  const text =
-    lang === "th" ? "ชนาธิป สมบัติอนุรักษ์" : "Chanatip Sombatanurak";
-
-  const letters = text.split("");
-
   return (
     <ClientPageWrapper>
       <Script
@@ -84,32 +78,13 @@ export default function IndexPage() {
             alt="Chanatip Sombatanurak - Full Stack Developer Portfolio"
             priority
           />
-          <motion.h1
-            className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl flex flex-wrap justify-center select-none cursor-default"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.03 } },
-            }}
+          <AnimatedText
+            as="h1"
+            delay={0.2}
+            className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            {letters.map((char, index) => (
-              <motion.span
-                key={index}
-                whileHover={{
-                  scale: 1.3,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 500,
-                  damping: 20,
-                }}
-                className="inline-block"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.h1>
+            {lang === "th" ? "ชนาธิป สมบัติอนุรักษ์" : "Chanatip Sombatanurak"}
+          </AnimatedText>
           <AnimatedText
             as="h3"
             delay={0.4}
