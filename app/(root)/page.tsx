@@ -7,7 +7,6 @@ import { ClientPageWrapper } from "@/components/common/client-page-wrapper";
 import { Icons } from "@/components/common/icons";
 import ExperienceCard from "@/components/experience/experience-card";
 import { ContactForm } from "@/components/forms/contact-form";
-// import Particles from "@/components/particles/particles";
 import ProjectCard from "@/components/projects/project-card";
 import SkillsCard from "@/components/skills/skills-card";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -20,6 +19,7 @@ import { featuredSkills } from "@/config/skills";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/providers/lang-provider";
 import profileImg from "@/public/profile-img.jpg";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -55,12 +55,13 @@ export default function IndexPage() {
     },
   };
 
+  const text =
+    lang === "th" ? "ชนาธิป สมบัติอนุรักษ์" : "Chanatip Sombatanurak";
+
+  const letters = text.split("");
+
   return (
     <ClientPageWrapper>
-      {/* <Particles
-        className="absolute inset-0 -z-10 animate-fade-in"
-        quantity={1000}
-      /> */}
       <Script
         id="schema-person"
         type="application/ld+json"
@@ -83,22 +84,38 @@ export default function IndexPage() {
             alt="Chanatip Sombatanurak - Full Stack Developer Portfolio"
             priority
           />
-          <AnimatedText
-            as="h1"
-            delay={0.2}
-            className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
+          <motion.h1
+            className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl flex flex-wrap justify-center select-none cursor-default"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.03 } },
+            }}
           >
-            {lang === "th" ? "ชนาธิป สมบัติอนุรักษ์" : "Chanatip Sombatanurak"}
-          </AnimatedText>
+            {letters.map((char, index) => (
+              <motion.span
+                key={index}
+                whileHover={{
+                  scale: 1.3,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 20,
+                }}
+                className="inline-block"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </motion.h1>
           <AnimatedText
             as="h3"
             delay={0.4}
             className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl"
           >
-            {lang === "th"
-              ? "นักพัฒนาซอฟต์แวร์ครบวงจร"
-              : "Full Stack Developer"}
-            {/* <TypeAnimation
+            <TypeAnimation
               key={lang}
               sequence={
                 lang === "th"
@@ -110,44 +127,15 @@ export default function IndexPage() {
               repeat={Infinity}
               speed={50}
               deletionSpeed={70}
-            /> */}
+            />
           </AnimatedText>
-          {/* <div className="mt-4 max-w-[42rem] text-center">
+          <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
               {lang === "th"
                 ? "นักพัฒนาซอฟต์แวร์ครบวงจร ที่หลงใหลในการสร้างเว็บแอปพลิเคชันที่ทันสมัย ยืดหยุ่นได้ดี และมอบประสบการณ์การใช้งานที่ยอดเยี่ยมแก่ผู้ใช้"
                 : "A passionate full stack developer specializing in building modern, scalable, and user-focused web applications."}
             </p>
-          </div> */}
-
-          <div className="mt-4 max-w-[42rem] text-center">
-            <p className="leading-normal text-muted-foreground text-sm sm:text-base">
-              <TypeAnimation
-                key={lang}
-                sequence={
-                  lang === "th"
-                    ? [
-                        "นักพัฒนาซอฟต์แวร์ครบวงจร ที่หลงใหลในการสร้างเว็บแอปพลิเคชันที่ทันสมัย ยืดหยุ่นได้ดี และมอบประสบการณ์การใช้งานที่ยอดเยี่ยมแก่ผู้ใช้",
-                        3000,
-                        "",
-                        800,
-                      ]
-                    : [
-                        "A passionate full stack developer specializing in building modern, scalable, and user-focused web applications.",
-                        3000,
-                        "",
-                        800,
-                      ]
-                }
-                wrapper="span"
-                cursor={true}
-                repeat={Infinity}
-                speed={45}
-                deletionSpeed={60}
-              />
-            </p>
           </div>
-
           <div className="flex flex-col mt-10 items-center justify-center sm:flex-row sm:space-x-4 gap-3">
             <AnimatedText delay={0.6}>
               <Link

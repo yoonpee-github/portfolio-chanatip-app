@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/components/common/theme-provider";
+import Particles from "@/components/particles/particles";
 import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -99,6 +100,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontHeading.variable
         )}
       >
+        <Particles
+          className="absolute inset-0 -z-10 pointer-events-none"
+          quantity={4000}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
