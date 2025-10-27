@@ -25,13 +25,13 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
     <div className="flex min-h-screen flex-col">
       <LangProvider>
         <header
-          className={`sticky top-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+          className={`sticky top-0 z-50 transition-all duration-700 ease-\[cubic-bezier\(0.4,0,0.2,1\)\] ${
             scrolled
               ? "bg-background/20 backdrop-blur-lg border-b border-border shadow-sm translate-y-0"
               : "bg-background/60 translate-y-0"
           }`}
         >
-          <div className="container flex h-14 items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] px-4">
+          <div className="container flex h-14 items-center justify-between transition-all duration-700 ease-\[cubic-bezier\(0.4,0,0.2,1\)\] px-4">
             <MainNav items={routesConfig.mainNav} />
             <nav className="flex items-center gap-3">
               <LangSwitcher />
