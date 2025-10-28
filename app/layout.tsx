@@ -1,7 +1,8 @@
+"use client";
+
 import { ThemeProvider } from "@/components/common/theme-provider";
 import Particles from "@/components/particles/particles";
 import { Toaster } from "@/components/ui/toaster";
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/providers/modal-provider";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -9,6 +10,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -25,70 +28,21 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export const metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  authors: [
-    {
-      name: siteConfig.authorName,
-      url: siteConfig.url,
-    },
-  ],
-  creator: siteConfig.username,
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
-  },
-  linkedin: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
-    creator: `@${siteConfig.username}`,
-  },
-  icons: {
-    icon: siteConfig.iconIco,
-    shortcut: siteConfig.logoIcon,
-    apple: siteConfig.logoIcon,
-  },
-  manifest: `${siteConfig.url}/site.webmanifest`,
-  alternates: {
-    canonical: siteConfig.url,
-  },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
-  },
-};
-
 export default function RootLayout({ children }: RootLayoutProps) {
+  const pathname = usePathname();
   const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID;
   if (!GA_ID) {
     throw new Error("Missing Google Analytics ID");
   }
+
+  const [particleQuantity, setParticleQuantity] = useState(400);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isMobile = window.innerWidth < 768;
+      setParticleQuantity(isMobile ? 100 : 800);
+    }
+  }, []);
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -102,7 +56,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <Particles
           className="absolute inset-0 -z-10 pointer-events-none"
-          quantity={800}
+          quantity={particleQuantity}
+          refreshKey={pathname}
         />
         <ThemeProvider
           attribute="class"
@@ -124,8 +79,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
+        <GoogleAnalytics gaId={GA_ID} />
       </body>
-      <GoogleAnalytics gaId={GA_ID} />
     </html>
   );
 }

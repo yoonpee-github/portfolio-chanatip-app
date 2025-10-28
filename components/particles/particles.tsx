@@ -9,6 +9,7 @@ interface ParticlesProps {
   staticity?: number;
   ease?: number;
   refresh?: boolean;
+  refreshKey?: string;
 }
 
 export default function Particles({
@@ -17,6 +18,7 @@ export default function Particles({
   staticity = 50,
   ease = 50,
   refresh = false,
+  refreshKey = "",
 }: ParticlesProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
@@ -25,18 +27,21 @@ export default function Particles({
   const mousePosition = useMousePosition();
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
-  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const dpr =
+    typeof window !== "undefined" ? Math.min(window.devicePixelRatio, 1.5) : 1;
 
   const resizeCanvas = useCallback(() => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
       circles.current.length = 0;
-      canvasSize.current.w = document.documentElement.scrollWidth;
-      canvasSize.current.h = document.documentElement.scrollHeight;
-      canvasRef.current.width = canvasSize.current.w * dpr;
-      canvasRef.current.height = canvasSize.current.h * dpr;
-      canvasRef.current.style.width = `${canvasSize.current.w}px`;
-      canvasRef.current.style.height = `${canvasSize.current.h}px`;
-      context.current.scale(dpr, dpr);
+      const width = window.innerWidth;
+      const height = Math.max(window.innerHeight, document.body.scrollHeight);
+      canvasSize.current.w = width;
+      canvasSize.current.h = height;
+      canvasRef.current.width = width * dpr;
+      canvasRef.current.height = height * dpr;
+      canvasRef.current.style.width = `${width}px`;
+      canvasRef.current.style.height = `${height}px`;
+      context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
   }, [dpr]);
 
@@ -189,6 +194,15 @@ export default function Particles({
   useEffect(() => {
     initCanvas();
   }, [refresh, initCanvas]);
+
+  useEffect(() => {
+    if (!context.current && canvasRef.current) {
+      context.current = canvasRef.current.getContext("2d");
+    }
+    resizeCanvas();
+    drawParticles();
+    animate();
+  }, [refreshKey, resizeCanvas, drawParticles, animate]);
 
   return (
     <div
