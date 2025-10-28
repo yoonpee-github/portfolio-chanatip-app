@@ -54,11 +54,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontHeading.variable
         )}
       >
-        <Particles
-          className="absolute inset-0 -z-10 pointer-events-none"
-          quantity={particleQuantity}
-          refreshKey={pathname}
-        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -73,6 +68,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
             "synthwave",
           ]}
         >
+          <Particles
+            className="absolute inset-0 -z-10 pointer-events-none"
+            quantity={particleQuantity}
+            refreshKey={pathname}
+          />
           {children}
           <Toaster />
           <ModalProvider />

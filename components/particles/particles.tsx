@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef } from "react";
 import { useMousePosition } from "../particles/mouse";
 
@@ -20,6 +21,7 @@ export default function Particles({
   refresh = false,
   refreshKey = "",
 }: ParticlesProps) {
+  const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
   const context = useRef<CanvasRenderingContext2D | null>(null);
@@ -77,17 +79,24 @@ export default function Particles({
     (circle: any, update = false) => {
       if (context.current) {
         const { x, y, translateX, translateY, size, alpha } = circle;
+        let color = "255,255,255";
+        if (theme === "light") color = "0,0,0";
+        else if (theme === "retro") color = "255,200,100";
+        else if (theme === "cyberpunk") color = "255,0,255";
+        else if (theme === "aurora") color = "120,200,255";
+        else if (theme === "synthwave") color = "255,100,200";
+        else if (theme === "paper") color = "80,80,80";
         context.current.translate(translateX, translateY);
         context.current.beginPath();
         context.current.arc(x, y, size, 0, 2 * Math.PI);
-        context.current.fillStyle = `rgba(255,255,255,${alpha})`;
+        context.current.fillStyle = `rgba(${color},${alpha})`;
         context.current.fill();
         context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
         if (!update) circles.current.push(circle);
       }
     },
-    [dpr]
+    [dpr, theme]
   );
 
   const remapValue = useCallback(
@@ -203,6 +212,13 @@ export default function Particles({
     drawParticles();
     animate();
   }, [refreshKey, resizeCanvas, drawParticles, animate]);
+
+  useEffect(() => {
+    if (context.current) {
+      clearContext();
+      drawParticles();
+    }
+  }, [theme, drawParticles, clearContext]);
 
   return (
     <div
