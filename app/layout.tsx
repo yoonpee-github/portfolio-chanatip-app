@@ -1,5 +1,6 @@
 "use client";
 
+import BgMusic from "@/components/common/bg-music";
 import { ThemeProvider } from "@/components/common/theme-provider";
 import Particles from "@/components/particles/particles";
 import { Toaster } from "@/components/ui/toaster";
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           {children}
           <Toaster />
           <ModalProvider />
+          <BgMusic />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

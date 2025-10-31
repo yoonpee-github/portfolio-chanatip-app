@@ -68,7 +68,7 @@ ${message}
       { status: 200 }
     );
   } catch (err) {
-    console.error("❌ Error sending email:", err);
+    // console.error("❌ Error sending email:", err);
     return NextResponse.json(
       { error: "Failed to send message" },
       { status: 500 }

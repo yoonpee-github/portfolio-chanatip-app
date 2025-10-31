@@ -47,7 +47,7 @@ export function ContactForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Form values to submit:", values);
+    // console.log("Form values to submit:", values);
     setLoading(true);
     try {
       const response = await fetch("/api/contact", {
@@ -57,7 +57,7 @@ export function ContactForm() {
         },
         body: JSON.stringify(values),
       });
-      console.log("Response from API:", response);
+      // console.log("Response from API:", response);
 
       form.reset();
 
@@ -70,7 +70,7 @@ export function ContactForm() {
         });
       }
     } catch (err) {
-      console.log("Err!", err);
+      // console.log("Err!", err);
     } finally {
       setLoading(false);
     }
