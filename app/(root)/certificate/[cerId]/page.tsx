@@ -20,12 +20,12 @@ export default function CertificateDetailPage({
   const { lang } = useLang();
   const certId = Number(params.cerId);
 
+  const [open, setOpen] = useState(false);
+  const [src, setSrc] = useState<string | undefined>(undefined);
+
   const certificate = certificates.find((c) => c.id === certId);
 
   if (!certificate) return notFound();
-
-  const [open, setOpen] = useState(false);
-  const [src, setSrc] = useState<string | undefined>(undefined);
 
   function handleZoom() {
     setSrc(certificate!.image);
