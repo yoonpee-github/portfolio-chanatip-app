@@ -1,6 +1,8 @@
 "use client";
 
 import AboutmeCard from "@/components/aboutme/aboutme-card";
+import CarouselCertificates from "@/components/certificate/CarouselCertificates";
+import CertificateCard from "@/components/certificate/CertificateCard";
 import { AnimatedSection } from "@/components/common/animated-section";
 import { AnimatedText } from "@/components/common/animated-text";
 import { ClientPageWrapper } from "@/components/common/client-page-wrapper";
@@ -11,6 +13,7 @@ import ProjectCard from "@/components/projects/project-card";
 import SkillsCard from "@/components/skills/skills-card";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { featuredAboutme } from "@/config/aboutme";
+import { certificates } from "@/config/certificate";
 import { experiences } from "@/config/experience";
 import { pagesConfig } from "@/config/pages";
 import { featuredProjects } from "@/config/projects";
@@ -290,6 +293,61 @@ export default function IndexPage() {
           </Link>
         </AnimatedText>
       </AnimatedSection>
+
+      <AnimatedSection className="container space-y-6 py-10" id="certificates">
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <AnimatedText
+            as="h2"
+            className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl"
+          >
+            {pagesConfig.certificate.title[lang]}
+          </AnimatedText>
+
+          <AnimatedText
+            as="p"
+            delay={0.2}
+            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+          >
+            {pagesConfig.certificate.description[lang]}
+          </AnimatedText>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          <CarouselCertificates
+            items={certificates.slice(0, 3).map((c) => ({
+              id: c.id,
+              title: c.title[lang],
+              image: c.image,
+            }))}
+            onOpen={() => {}}
+          />
+        </div>
+
+        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl">
+          {certificates.slice(0, 3).map((c) => (
+            <CertificateCard
+              key={c.id}
+              id={c.id}
+              title={c.title[lang]}
+              image={c.image}
+              description={c.description?.[lang]}
+              onOpen={() => {}}
+            />
+          ))}
+        </div>
+
+        <AnimatedText delay={0.4} className="flex justify-center">
+          <Link href="/certificate">
+            <Button variant={"outline"} className="rounded-xl">
+              <Icons.chevronDown className="mr-2 h-4 w-4" />
+              {lang === "th"
+                ? "ดูประกาศนียบัตรทั้งหมด"
+                : "View All Certificates"}
+            </Button>
+          </Link>
+        </AnimatedText>
+      </AnimatedSection>
+
       <AnimatedSection
         direction="down"
         className="container space-y-6 bg-muted py-10 my-14"

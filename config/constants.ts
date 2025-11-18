@@ -83,9 +83,10 @@ export type ValidExpType = "Internal Systems" | "External Systems (Clients)";
 
 export type ValidPages =
   | "home"
+  | "aboutme"
+  | "experience"
   | "skills"
   | "projects"
-  | "experience"
-  | "contact"
-  | "aboutme"
-  | "resume";
+  | "certificate"
+  | "resume"
+  | "contact";

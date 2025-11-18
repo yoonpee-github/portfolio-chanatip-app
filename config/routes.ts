@@ -17,6 +17,10 @@ export const routesConfig = {
       href: "/projects",
     },
     {
+      title: { en: "Certificate", th: "ประกาศนียบัตร" },
+      href: "/certificate",
+    },
+    {
       title: { en: "Resume", th: "ประวัติย่อ" },
       href: "/resume",
     },

@@ -31,6 +31,34 @@ export const pagesConfig: PagesConfig = {
       },
     },
   },
+  aboutme: {
+    title: { en: "About Me", th: "เกี่ยวกับฉัน" },
+    description: {
+      en: "I’m a web developer who enjoys building useful applications, learning new skills, and growing through both work and personal interests.",
+      th: "ฉันเป็นนักพัฒนาเว็บไซต์ที่ชอบสร้างแอปพลิเคชันที่เป็นประโยชน์ ชอบเรียนรู้สิ่งใหม่ ๆ และเติบโตจากทั้งงานและความสนใจส่วนตัว",
+    },
+    metadata: {
+      title: { en: "About Me", th: "เกี่ยวกับฉัน" },
+      description: {
+        en: "Learn about Chanatip Sombatanurak’s journey — web development, education, soft skills, and personal interests.",
+        th: "รู้จักเส้นทางของชนาธิป สมบัตินุรักษ์ — การพัฒนาเว็บ การศึกษา ทักษะ และความสนใจส่วนตัว",
+      },
+    },
+  },
+  experience: {
+    title: { en: "Experience", th: "ประสบการณ์" },
+    description: {
+      en: "Professional journey and career timeline.",
+      th: "เส้นทางอาชีพและประสบการณ์การทำงาน",
+    },
+    metadata: {
+      title: { en: "Experience", th: "ประสบการณ์" },
+      description: {
+        en: "Chanatip Sombatanurak's professional journey and experience timeline.",
+        th: "เส้นทางอาชีพและประสบการณ์ของชนาธิป สมบัตินุรักษ์",
+      },
+    },
+  },
   skills: {
     title: { en: "Skills", th: "ทักษะ" },
     description: {
@@ -59,31 +87,23 @@ export const pagesConfig: PagesConfig = {
       },
     },
   },
-  contact: {
-    title: { en: "Contact", th: "ติดต่อ" },
+  certificate: {
+    title: {
+      en: "Certificates",
+      th: "ประกาศนียบัตร",
+    },
     description: {
-      en: "Let's connect and explore collaborations.",
-      th: "มาทำความรู้จักและร่วมมือกันเถอะ",
+      en: "A collection of certificates I have achieved from learning and skill development.",
+      th: "รวมประกาศนียบัตรที่ได้รับจากการเรียนรู้และพัฒนาทักษะต่าง ๆ",
     },
     metadata: {
-      title: { en: "Contact", th: "ติดต่อ" },
-      description: {
-        en: "Contact Chanatip Sombatanurak.",
-        th: "ติดต่อชนาธิป สมบัตินุรักษ์",
+      title: {
+        en: "Certificates",
+        th: "ประกาศนียบัตร",
       },
-    },
-  },
-  aboutme: {
-    title: { en: "About Me", th: "เกี่ยวกับฉัน" },
-    description: {
-      en: "I’m a web developer who enjoys building useful applications, learning new skills, and growing through both work and personal interests.",
-      th: "ฉันเป็นนักพัฒนาเว็บไซต์ที่ชอบสร้างแอปพลิเคชันที่เป็นประโยชน์ ชอบเรียนรู้สิ่งใหม่ ๆ และเติบโตจากทั้งงานและความสนใจส่วนตัว",
-    },
-    metadata: {
-      title: { en: "About Me", th: "เกี่ยวกับฉัน" },
       description: {
-        en: "Learn about Chanatip Sombatanurak’s journey — web development, education, soft skills, and personal interests.",
-        th: "รู้จักเส้นทางของชนาธิป สมบัตินุรักษ์ — การพัฒนาเว็บ การศึกษา ทักษะ และความสนใจส่วนตัว",
+        en: "A full showcase of all certificates and achievements.",
+        th: "แสดงประกาศนียบัตรและผลงานทั้งหมดของฉัน",
       },
     },
   },
@@ -101,17 +121,17 @@ export const pagesConfig: PagesConfig = {
       },
     },
   },
-  experience: {
-    title: { en: "Experience", th: "ประสบการณ์" },
+  contact: {
+    title: { en: "Contact", th: "ติดต่อ" },
     description: {
-      en: "Professional journey and career timeline.",
-      th: "เส้นทางอาชีพและประสบการณ์การทำงาน",
+      en: "Let's connect and explore collaborations.",
+      th: "มาทำความรู้จักและร่วมมือกันเถอะ",
     },
     metadata: {
-      title: { en: "Experience", th: "ประสบการณ์" },
+      title: { en: "Contact", th: "ติดต่อ" },
       description: {
-        en: "Chanatip Sombatanurak's professional journey and experience timeline.",
-        th: "เส้นทางอาชีพและประสบการณ์ของชนาธิป สมบัตินุรักษ์",
+        en: "Contact Chanatip Sombatanurak.",
+        th: "ติดต่อชนาธิป สมบัตินุรักษ์",
       },
     },
   },
